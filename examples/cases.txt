@@ -1,0 +1,15 @@
+# one criteria set per line — modified strengths as CODE_Strength
+PVS1 PS1
+PVS1 PM2
+PVS1 PP3                     # classic divergence: 2015 needs ≥2 PP
+PS1 PM1
+PS1 PM1 PP1 PP2
+PM1 PM2 PP3
+PM2_Supporting PS1 PM5       # SVI-modified PM2
+PS1 PM1 BS1                  # conflict: 2015 ignores lone BS1 for LP; points subtract it
+PVS1 PS1 BS1 BS2             # conflict both sides: 2015 → VUS; points 12-8=4 → VUS
+BS1 BP4
+BS1 BS2
+BA1 PP3
+PP1 PP2 PP3 PP4
+PM1 PM2 PP1 PP2

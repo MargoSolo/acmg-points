@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acmg-points"
+version = "0.1.0"
+description = "Points-based ACMG/AMP variant classification (Tavtigian 2020 naturally-scaled system, the basis of SVC v4) side by side with the 2015 combining rules — see where they disagree."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Margarita Solosenko"}]
+dependencies = []
+keywords = ["ACMG", "AMP", "variant classification", "ClinGen", "SVI", "points", "Bayesian"]
+
+[project.scripts]
+acmg-points = "acmg_points.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
