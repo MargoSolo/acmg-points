@@ -1,4 +1,4 @@
-# acmg-points
+# acmg-points <img src="docs/logo.svg" align="right" width="110" alt="">
 
 [![ci](https://github.com/MargoSolo/acmg-points/actions/workflows/ci.yml/badge.svg)](https://github.com/MargoSolo/acmg-points/actions/workflows/ci.yml)
 ![coverage](https://img.shields.io/badge/coverage-97%25-brightgreen) ![no dependencies](https://img.shields.io/badge/deps-none-2ecc71)

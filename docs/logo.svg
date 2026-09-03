@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+<polygon points="179.7,146.0 100.0,192.0 20.3,146.0 20.3,54.0 100.0,8.0 179.7,54.0" fill="#6c3fb5" stroke="#4a2a85" stroke-width="5"/>
+<rect x="52" y="98" width="96" height="6" rx="3" fill="#fff"/><circle cx="70" cy="101" r="8" fill="#fff"/><circle cx="100" cy="101" r="8" fill="#fff"/><circle cx="130" cy="101" r="8" fill="#f6c343"/><text x="100" y="80" font-family="Menlo,monospace" font-size="20" fill="#fff" text-anchor="middle">+9</text>
+<text x="100" y="176" font-family="Menlo,Consolas,monospace" font-size="17" fill="#fff" text-anchor="middle">acmg-points</text>
+</svg>
