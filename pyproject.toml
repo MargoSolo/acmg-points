@@ -9,7 +9,7 @@ description = "Points-based ACMG/AMP variant classification (Tavtigian 2020 natu
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
-authors = [{name = "Margarita Solosenko"}]
+authors = [{name = "Margarita Soloshenko", email = "msoloshenk@gmail.com"}]
 classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Intended Audience :: Science/Research", "Topic :: Scientific/Engineering :: Bio-Informatics"]
 dependencies = []
 keywords = ["ACMG", "AMP", "variant classification", "ClinGen", "SVI", "points", "Bayesian"]
