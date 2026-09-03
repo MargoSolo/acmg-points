@@ -1,0 +1,20 @@
+site_name: acmg-points
+site_description: "Points-based ACMG/AMP classification alongside the 2015 rules"
+site_url: https://margosolo.github.io/acmg-points/
+repo_url: https://github.com/MargoSolo/acmg-points
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      toggle: {icon: material/brightness-7, name: dark}
+    - scheme: slate
+      primary: deep purple
+      toggle: {icon: material/brightness-4, name: light}
+  features: [navigation.sections, content.code.copy, toc.integrate]
+markdown_extensions: [admonition, tables, pymdownx.superfences, pymdownx.details, toc]
+nav:
+  - Overview: index.md
+
+  - Changelog: changelog.md
+  - Contributing: contributing.md
