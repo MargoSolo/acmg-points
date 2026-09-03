@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.1 (2026-09-03)
+
+Public release: PyPI package, Zenodo archiving, PyPI metadata, trusted-publishing workflow, author ORCID. No functional changes.
+
 ## Unreleased
 
 - CLI: invalid input (unknown criterion, criterion applied twice) now prints `error: …` and exits 2 instead of a traceback.

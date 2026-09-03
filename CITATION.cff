@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
 type: software
 title: "acmg-points: points-based ACMG/AMP classification alongside the 2015 combining rules"
-version: 0.1.0
+version: 0.1.1
 date-released: "2026-09-03"
 license: MIT
 repository-code: "https://github.com/MargoSolo/acmg-points"
