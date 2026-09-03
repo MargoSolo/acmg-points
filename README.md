@@ -1,7 +1,7 @@
 # acmg-points
 
 [![ci](https://github.com/MargoSolo/acmg-points/actions/workflows/ci.yml/badge.svg)](https://github.com/MargoSolo/acmg-points/actions/workflows/ci.yml)
-![no dependencies](https://img.shields.io/badge/deps-none-2ecc71)
+![coverage](https://img.shields.io/badge/coverage-97%25-brightgreen) ![no dependencies](https://img.shields.io/badge/deps-none-2ecc71)
 ![scheme](https://img.shields.io/badge/points-Tavtigian%202020-8e44ad)
 ![rules](https://img.shields.io/badge/rules-Richards%202015-8e44ad)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue)
