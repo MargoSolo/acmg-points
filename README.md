@@ -84,6 +84,6 @@ Official SVC v4.0 table as a drop-in scheme · SVI modifier library (PVS1 decisi
 
 ## Cite
 
-DOI (all versions): 10.5281/zenodo.22286276 · this version: 10.5281/zenodo.22286277
+DOI (all versions): 10.5281/zenodo.22286276 · this version: 10.5281/zenodo.22286533
 
 Soloshenko M. *acmg-points: points-based ACMG/AMP classification alongside the 2015 rules.* 2026, v0.1.0. Please also cite Tavtigian et al. 2020 and Richards et al. 2015 — the science is theirs. MIT License.
