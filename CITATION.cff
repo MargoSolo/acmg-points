@@ -3,6 +3,11 @@ message: "If you use this software, please cite it as below."
 type: software
 title: "acmg-points: points-based ACMG/AMP classification alongside the 2015 combining rules"
 version: 0.1.1
+doi: 10.5281/zenodo.22286277
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22286276
+    description: Concept DOI (all versions)
 date-released: "2026-09-03"
 license: MIT
 repository-code: "https://github.com/MargoSolo/acmg-points"

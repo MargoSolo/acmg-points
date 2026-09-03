@@ -1,6 +1,7 @@
 # acmg-points <img src="docs/logo.svg" align="right" width="110" alt="">
 
 [![ci](https://github.com/MargoSolo/acmg-points/actions/workflows/ci.yml/badge.svg)](https://github.com/MargoSolo/acmg-points/actions/workflows/ci.yml)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22286276.svg)](https://doi.org/10.5281/zenodo.22286276)
 ![coverage](https://img.shields.io/badge/coverage-97%25-brightgreen) ![no dependencies](https://img.shields.io/badge/deps-none-2ecc71)
 ![scheme](https://img.shields.io/badge/points-Tavtigian%202020-8e44ad)
 ![rules](https://img.shields.io/badge/rules-Richards%202015-8e44ad)
@@ -73,5 +74,7 @@ Five `pytest` cases pin the published bands, the strength modifiers, the 2015 co
 Official SVC v4.0 table as a drop-in scheme · SVI modifier library (PVS1 decision tree, calibrated PP3/BP4) · co-application checks · VCEP-specific schemes · batch from CSV / VCF INFO · JOSS paper.
 
 ## Cite
+
+DOI (all versions): 10.5281/zenodo.22286276 · this version: 10.5281/zenodo.22286277
 
 Soloshenko M. *acmg-points: points-based ACMG/AMP classification alongside the 2015 rules.* 2026, v0.1.0. Please also cite Tavtigian et al. 2020 and Richards et al. 2015 — the science is theirs. MIT License.
