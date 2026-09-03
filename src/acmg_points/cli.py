@@ -22,7 +22,7 @@ def render(r) -> str:
 
 
 def cmd_classify(a):
-    r = classify(a.criteria)
+    r = classify(a.criteria, a.conflict)
     print(json.dumps(r.to_dict(), indent=2) if a.json else render(r))
     sys.exit(0)
 
@@ -40,7 +40,7 @@ def cmd_compare(a):
         s = line.split("#", 1)[0].strip()
         if not s:
             continue
-        r = classify(s.split())
+        r = classify(s.split(), a.conflict)
         dis += 0 if r.agree else 1
         rows.append((s, r))
     print("| criteria | points | points class | 2015 class | agree |")
@@ -54,9 +54,9 @@ def main(argv=None):
     p = argparse.ArgumentParser(prog="acmg-points", description="Points-based ACMG/AMP classification next to the 2015 rules.")
     p.add_argument("--version", action="version", version=__version__)
     s = p.add_subparsers(dest="cmd", required=True)
-    c = s.add_parser("classify", help="classify a set of applied criteria"); c.add_argument("criteria", nargs="+"); c.add_argument("--json", action="store_true"); c.set_defaults(fn=cmd_classify)
+    c = s.add_parser("classify", help="classify a set of applied criteria"); c.add_argument("criteria", nargs="+"); c.add_argument("--json", action="store_true"); c.add_argument("--conflict", choices=("any", "both-met"), default="any", help="2015 conflict rule reading (default any: any P + any B evidence → VUS)"); c.set_defaults(fn=cmd_classify)
     t = s.add_parser("table", help="print the points scheme"); t.set_defaults(fn=cmd_table)
-    m = s.add_parser("compare", help="batch: one criteria set per line → table of both schemes"); m.add_argument("--file", required=True); m.set_defaults(fn=cmd_compare)
+    m = s.add_parser("compare", help="batch: one criteria set per line → table of both schemes"); m.add_argument("--file", required=True); m.add_argument("--conflict", choices=("any", "both-met"), default="any"); m.set_defaults(fn=cmd_compare)
     a = p.parse_args(argv)
     try:
         a.fn(a)

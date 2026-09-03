@@ -19,7 +19,7 @@ def test_classify_text_and_json(capsys):
 
 
 def test_compare_and_table(capsys, tmp_path):
-    f = tmp_path / "c.txt"; f.write_text("# comment\nPVS1 PS1\n\nPS1 PM1 BS1  # conflict\n")
+    f = tmp_path / "c.txt"; f.write_text("# comment\nPVS1 PS1\n\nPVS1 PP3  # conflict\n")
     try:
         cli.main(["compare", "--file", str(f)])
     except SystemExit as e:

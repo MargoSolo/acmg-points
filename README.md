@@ -13,31 +13,40 @@ ClinGen is moving variant classification from the 2015 combining rules to a poin
 
 ```bash
 pip install git+https://github.com/MargoSolo/acmg-points      # no dependencies
-acmg-points classify PVS1 PP3
+acmg-points classify PVS1 PM1
 ```
 ```
   PVS1  VeryStrong  +8
-  PP3   Supporting  +1
-  total             +9  → Likely pathogenic   [tavtigian2020]
-  2015 rules        → Uncertain significance   (no 2015 combining rule met)
+  PM1   Moderate    +2
+  total             +10 → Pathogenic          [tavtigian2020]
+  2015 rules        → Likely pathogenic       (2015 combining rule met)
   ⚠️ SCHEMES DISAGREE
 ```
 
 ## Where the systems disagree
 
-Fourteen evidence sets from `examples/cases.txt`, placed on the points scale; the band gives the points class, and ✕ marks the sets where the 2015 rules say something else:
+Fifteen evidence sets from `examples/cases.txt`, placed on the points scale; the band gives the points class, and ✕ marks the sets where the 2015 rules say something else:
 
 ![points vs 2015 rules](docs/points-vs-2015.png)
 
-Three patterns worth knowing before a lab switches systems:
-
 | evidence | points | points class | 2015 class | why |
 |---|---|---|---|---|
-| PVS1 + PM2 | +10 | **Pathogenic** | Likely pathogenic | 2015 needs PVS1 + ≥ 2 Moderate for Pathogenic; points reach 10 with one |
-| PVS1 + PP3 | +9 | **Likely pathogenic** | VUS | 2015 needs ≥ 2 Supporting next to PVS1; points need one |
-| PS1 + PM1 + BS1 | +2 | **VUS** | Likely pathogenic | a lone benign Strong is invisible to the 2015 pathogenic rules; points subtract 4 |
+| PVS1 + PM1 (one Moderate) | +10 | **Pathogenic** | Likely pathogenic | 2015 needs PVS1 + ≥ 2 Moderate for Pathogenic; points reach 10 with one |
+| PVS1 + PP3 (one Supporting) | +9 | **Likely pathogenic** | VUS | 2015 needs ≥ 2 Supporting next to PVS1; points need one |
+| PVS1 + PM2_Supporting | +9 | **Likely pathogenic** | VUS | the same pattern with PM2 at the strength ClinGen SVI recommends since 2020 |
 
-Points resolve conflicting evidence by arithmetic; the 2015 rules only fall back to VUS when *both* a pathogenic and a benign rule are met. Full table: [`examples/compare.md`](examples/compare.md).
+Full table: [`examples/compare.md`](examples/compare.md).
+
+**Conflicting evidence.** Richards 2015 puts a variant in *Uncertain significance* when "the criteria for benign and pathogenic are contradictory". That sentence has two readings, and implementations differ. `acmg-points` defaults to the stricter one and lets you switch:
+
+| `--conflict` | reading | PS1 + PM1 + BS1 |
+|---|---|---|
+| `any` (default) | any pathogenic evidence together with any benign evidence → VUS | VUS (points: +2, VUS too) |
+| `both-met` | VUS only when a pathogenic rule *and* a benign rule are both met | Likely pathogenic |
+
+BA1 is stand-alone benign evidence under both readings and is not overridden by supporting pathogenic criteria. The JSON output records which reading was used.
+
+**PM2.** The 2015 default is Moderate; ClinGen SVI recommended PM2 at Supporting strength in 2020. Apply it as `PM2_Supporting` — the package does not silently downgrade it, because the strength is your decision.
 
 ## Use
 

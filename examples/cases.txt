@@ -1,15 +1,16 @@
 # one criteria set per line — modified strengths as CODE_Strength
 PVS1 PS1
-PVS1 PM2
-PVS1 PP3                     # classic divergence: 2015 needs ≥2 PP
+PVS1 PM1                     # divergence: points +10 → P; 2015 (1 VS + 1 M) → LP
+PVS1 PP3                     # divergence: 2015 needs ≥2 PP → VUS; points +9 → LP
+PVS1 PM2_Supporting          # PM2 at SVI-2020 strength: +9 → LP; 2015 → VUS
 PS1 PM1
 PS1 PM1 PP1 PP2
 PM1 PM2 PP3
-PM2_Supporting PS1 PM5       # SVI-modified PM2
-PS1 PM1 BS1                  # conflict: 2015 ignores lone BS1 for LP; points subtract it
-PVS1 PS1 BS1 BS2             # conflict both sides: 2015 → VUS; points 12-8=4 → VUS
+PM2_Supporting PS1 PM5
+PS1 PM1 BS1                  # P and B evidence together: VUS under both (2015 conflict rule, default reading)
+PVS1 PS1 BS1 BS2             # both rules met: VUS under both
 BS1 BP4
 BS1 BS2
-BA1 PP3
+BA1 PP3                      # BA1 is stand-alone: Benign under 2015; points −7 → Benign
 PP1 PP2 PP3 PP4
 PM1 PM2 PP1 PP2

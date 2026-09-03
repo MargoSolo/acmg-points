@@ -40,9 +40,21 @@ CRITERIA = {
 }
 
 
-def rules_2015(counts: dict[str, int]) -> tuple[str, str]:
+CONFLICT_MODES = ("any", "both-met")
+
+
+def rules_2015(counts: dict[str, int], conflict: str = "any") -> tuple[str, str]:
     """Richards 2015 Table 5. `counts` keys: PVS, PS, PM, PP, BA, BS, BP
-    (criteria counted at their *applied* strength, per ClinGen SVI practice)."""
+    (criteria counted at their *applied* strength, per ClinGen SVI practice).
+
+    `conflict` — how to read Richards 2015's rule that a variant is of uncertain significance when
+    "the criteria for benign and pathogenic are contradictory":
+      "any"      (default) any pathogenic evidence together with any benign evidence → Uncertain significance,
+                 even if only one side reaches a classification on its own;
+      "both-met" only when a pathogenic rule AND a benign rule are both met (the reading some
+                 implementations use).
+    The two readings differ exactly on sets like PS1 + PM1 + BS1; the report says which one was used."""
+    if conflict not in CONFLICT_MODES: raise ValueError(f"conflict must be one of {CONFLICT_MODES}")
     pvs, ps, pm, pp = counts["PVS"], counts["PS"], counts["PM"], counts["PP"]
     ba, bs, bp = counts["BA"], counts["BS"], counts["BP"]
 
@@ -60,8 +72,13 @@ def rules_2015(counts: dict[str, int]) -> tuple[str, str]:
 
     p_side = "Pathogenic" if path else ("Likely pathogenic" if likely_path else None)
     b_side = "Benign" if benign else ("Likely benign" if likely_benign else None)
+    any_p = (pvs + ps + pm + pp) > 0; any_b = (ba + bs + bp) > 0
     if p_side and b_side:
         return "Uncertain significance", f"conflicting: rules give {p_side} and {b_side} → VUS by the 2015 conflict rule"
+    if ba >= 1 and conflict == "any" and not p_side:
+        return "Benign", "BA1 is stand-alone evidence (Richards 2015): Benign regardless of supporting pathogenic evidence"
+    if conflict == "any" and any_p and any_b:
+        return "Uncertain significance", f"pathogenic and benign evidence both applied → VUS (Richards 2015: 'criteria for benign and pathogenic are contradictory'; rule side alone would give {p_side or b_side or 'VUS'})"
     if p_side:
         return p_side, "2015 combining rule met"
     if b_side:

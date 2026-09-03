@@ -65,6 +65,7 @@ class Result:
     rules_class: str
     rules_reason: str
     counts: dict[str, int] = field(default_factory=dict)
+    conflict_mode: str = "any"
 
     @property
     def agree(self) -> bool:
@@ -74,12 +75,12 @@ class Result:
         return {
             "applied": [a.__dict__ | {"modified": a.modified} for a in self.applied],
             "points": {"scheme": POINTS["name"], "total": self.total, "class": self.points_class},
-            "rules_2015": {"class": self.rules_class, "reason": self.rules_reason, "counts": self.counts},
+            "rules_2015": {"class": self.rules_class, "reason": self.rules_reason, "counts": self.counts, "conflict_mode": self.conflict_mode},
             "agree": self.agree,
         }
 
 
-def classify(tokens: list[str]) -> Result:
+def classify(tokens: list[str], conflict: str = "any") -> Result:
     items = [parse(t) for t in tokens]
     seen = set()
     for a in items:
@@ -88,5 +89,5 @@ def classify(tokens: list[str]) -> Result:
         seen.add(a.code)
     total = sum(a.points for a in items)
     counts = counts_at_applied_strength(items)
-    rcls, rreason = rules_2015(counts)
-    return Result(items, total, band(total), rcls, rreason, counts)
+    rcls, rreason = rules_2015(counts, conflict)
+    r = Result(items, total, band(total), rcls, rreason, counts); r.conflict_mode = conflict; return r
