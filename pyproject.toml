@@ -10,6 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "MIT"}
 authors = [{name = "Margarita Solosenko"}]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Intended Audience :: Science/Research", "Topic :: Scientific/Engineering :: Bio-Informatics"]
 dependencies = []
 keywords = ["ACMG", "AMP", "variant classification", "ClinGen", "SVI", "points", "Bayesian"]
 
@@ -18,3 +19,8 @@ acmg-points = "acmg_points.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.urls]
+Homepage = "https://github.com/MargoSolo/acmg-points"
+Documentation = "https://margosolo.github.io/acmg-points/"
+Changelog = "https://github.com/MargoSolo/acmg-points/blob/main/CHANGELOG.md"
