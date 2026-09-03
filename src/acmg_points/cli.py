@@ -57,7 +57,11 @@ def main(argv=None):
     c = s.add_parser("classify", help="classify a set of applied criteria"); c.add_argument("criteria", nargs="+"); c.add_argument("--json", action="store_true"); c.set_defaults(fn=cmd_classify)
     t = s.add_parser("table", help="print the points scheme"); t.set_defaults(fn=cmd_table)
     m = s.add_parser("compare", help="batch: one criteria set per line → table of both schemes"); m.add_argument("--file", required=True); m.set_defaults(fn=cmd_compare)
-    a = p.parse_args(argv); a.fn(a)
+    a = p.parse_args(argv)
+    try:
+        a.fn(a)
+    except ValueError as e:
+        print(f"error: {e}", file=sys.stderr); sys.exit(2)
 
 
 if __name__ == "__main__":
